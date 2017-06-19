@@ -1,0 +1,64 @@
+﻿@model IEnumerable<OneCore.Modelo.Usuario>
+
+@{
+    ViewBag.Title = "Lista de usuarios";
+}
+
+<h2>Lista de usuarios</h2>
+
+<p>
+    @Html.ActionLink("Crear nuevo", "Create", null, new { @class = "btn btn-success"})
+</p>
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.Nombre)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Contraseña)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Correo)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Sexo)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Activo)
+        </th>
+        <th></th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.Nombre)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Contraseña)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Correo)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Sexo)
+        </td>
+        <td>
+            @if (item.Activo)
+            {
+                <p>S&iacute;</p>
+            }
+            else
+            {
+                <p>No</p>
+            }
+        </td>
+        <td>
+            @Html.ActionLink("Editar", "Edit", new { id=item.UsuarioID }) |
+            @Html.ActionLink("Detalles", "Details", new { id=item.UsuarioID }) |
+            @Html.ActionLink("Eliminar", "Delete", new { id=item.UsuarioID })
+        </td>
+    </tr>
+}
+
+</table>
